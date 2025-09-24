@@ -26,7 +26,7 @@ namespace PiedraPapelOTijeras.Dominio
         private Jugador? DeterminarGanador(Juego.Jugada jugada1, Juego.Jugada jugada2, Jugador jugador1, Jugador jugador2)
         {
             if (jugada1 == jugada2)
-                return null; // Empate
+                return null; // Empate  //assert
 
             return jugada1 switch
             {

@@ -8,7 +8,7 @@ namespace PiedraPapelOTijeras.Dominio
         public Jugador(string nombre)
         {
             if (string.IsNullOrWhiteSpace(nombre))
-                throw new ArgumentException("El nombre del jugador no puede estar vacío", nameof(nombre));
+                throw new ArgumentException("El nombre del jugador no puede estar vacío", nameof(nombre)); //asser. ex
             
             Nombre = nombre;
             Puntaje = 0;

@@ -29,5 +29,46 @@ namespace PiedraPapelOTijeras.Tests
             Assert.Equal(nombre2, juego.Jugador2.Nombre);
             Assert.Equal(puntaje, juego.PuntajeParaGanar);
         }
+
+        [Theory]
+        [InlineData("Piedra")]
+        [InlineData("Tijeras")]
+        [InlineData("PAPEL")]
+        [InlineData("  1")]
+        [InlineData("  2 ")]
+        [InlineData("3   ")]
+        public void Validaciones_De_Jugadas_Correctas(string entrada)
+        {
+            ServicioJuego servicio = new ServicioJuego();
+
+            Juego.Jugada Retorno;
+
+            bool ResultadoBool;
+
+            ResultadoBool = servicio.ValidarJugada(entrada, out Retorno);
+
+            Assert.True(ResultadoBool);
+
+        }
+
+        [Theory]
+        [InlineData("")]
+        [InlineData("    ")]
+        [InlineData("Piedras")]
+        [InlineData("Piedra papel")]
+        [InlineData("nose")]
+
+        public void Validaciones_De_Jugadas_Incorrectas(string entrada)
+        {
+            ServicioJuego servicio = new ServicioJuego();
+
+            Juego.Jugada Retorno;
+
+            bool ResultadoBool;
+
+            ResultadoBool = servicio.ValidarJugada(entrada, out Retorno);
+
+            Assert.False(ResultadoBool);
+        }
     }
 }

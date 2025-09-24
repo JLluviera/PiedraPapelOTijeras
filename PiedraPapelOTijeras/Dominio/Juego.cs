@@ -21,7 +21,7 @@ namespace PiedraPapelOTijeras.Dominio
             Jugador2 = jugador2 ?? throw new ArgumentNullException(nameof(jugador2));
             
             if (puntajeParaGanar < 1)
-                throw new ArgumentException("El puntaje para ganar debe ser mayor a 0", nameof(puntajeParaGanar));
+                throw new ArgumentException("El puntaje para ganar debe ser mayor a 0", nameof(puntajeParaGanar)); // assert.throw exp
             
             PuntajeParaGanar = puntajeParaGanar;
             HistorialRondas = new List<ResultadoRonda>();
