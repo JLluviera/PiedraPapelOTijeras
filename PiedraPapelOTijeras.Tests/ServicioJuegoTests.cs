@@ -70,5 +70,19 @@ namespace PiedraPapelOTijeras.Tests
 
             Assert.False(ResultadoBool);
         }
+
+        [Fact]
+
+        public void Obtener_Juego_Actual_Debe_Devolver_El_Juego_Iniciado()
+        {
+
+            string nombre1 = "pablo";
+            string nombre2 = "Elena";
+            int puntaje = 8;
+
+            var juego = _servicio.IniciarNuevaPartida(nombre1, nombre2, puntaje);
+
+            Assert.Equal(juego, _servicio.ObtenerJuegoActual());
+        }
     }
 }
