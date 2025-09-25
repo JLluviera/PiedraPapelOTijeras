@@ -52,6 +52,22 @@ namespace PiedraPapelOTijeras.Tests
         }
 
         [Theory]
+        [InlineData("Pieda", Juego.Jugada.Piedra)]
+        [InlineData("1", Juego.Jugada.Piedra)]
+        [InlineData("PapEl", Juego.Jugada.Papel)]
+        [InlineData("2", Juego.Jugada.Papel)]
+        [InlineData("Tijeras", Juego.Jugada.Tijeras)]
+        [InlineData("3", Juego.Jugada.Tijeras)]
+        public void Devuelve_Jugada_Correcta(string entrada, Juego.Jugada esperado)
+        {
+            Juego.Jugada retorno;
+
+            bool validacion = _servicio.ValidarJugada(entrada, out retorno);
+
+            Assert.Equal(esperado, retorno);
+        }
+
+        [Theory]
         [InlineData("")]
         [InlineData("    ")]
         [InlineData("Piedras")]

@@ -24,15 +24,13 @@ namespace PiedraPapelOTijeras.Tests
 
         public void Testeo_Reglas_Basicas(Juego.Jugada jugada1, Juego.Jugada jugada2, string nombreGanador)
         {
-            //Arrenge
-
-            //Act
 
             ResultadoRonda ServicioResultado = new ResultadoRonda(_jugador1, jugada1, _jugador2, jugada2);
 
             Jugador? ganadorRecibido = ServicioResultado.Ganador;
 
-            //Assert
+
+
             Assert.Equal(nombreGanador, ganadorRecibido.Nombre);
         }
 
