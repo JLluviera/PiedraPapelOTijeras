@@ -20,6 +20,21 @@ namespace PiedraPapelOTijeras.Tests
 
             Assert.Contains("El nombre del jugador no puede estar vacío", ex.Message);
         }
+
+        [Fact]
+        public void Incrementar_Puntaje_Funciona()
+        {
+            Jugador jugador = new Jugador("Juan");
+            int puntaje = 0;
+
+            for (int i = 0; i < 2; i++)
+            {
+                jugador.IncrementarPuntaje();
+                puntaje++;
+            }
+
+            Assert.Equal(puntaje, jugador.Puntaje);
+        }
     }
 
     

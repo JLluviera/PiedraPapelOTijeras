@@ -31,7 +31,7 @@ namespace PiedraPapelOTijeras.Tests
 
 
 
-            Assert.Equal(nombreGanador, ganadorRecibido.Nombre);
+            Assert.Equal(nombreGanador, ganadorRecibido!.Nombre);
         }
 
         [Theory]
@@ -47,6 +47,22 @@ namespace PiedraPapelOTijeras.Tests
             bool ResultadoEmpate = ServiciosResultados.EsEmpate;
 
             Assert.True(ResultadoEmpate);
+        }
+
+        [Fact]
+        public void GanarDescripcion_Jugador1Gana_DescripcionCorrecta()
+        {
+            var resultado = new ResultadoRonda(_jugador1, Juego.Jugada.Piedra, _jugador2, Juego.Jugada.Tijeras);
+
+            Assert.Equal("Jugador1 gana: Piedra aplasta a Tijeras", resultado.Descripcion);
+        }
+
+        [Fact]
+        public void No_Hay_Ganador_EsEmpate()
+        {
+            ResultadoRonda resultado = new ResultadoRonda(_jugador1, Juego.Jugada.Piedra, _jugador2, Juego.Jugada.Piedra);
+
+            Assert.True(resultado.EsEmpate);
         }
 
     }

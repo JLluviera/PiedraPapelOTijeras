@@ -50,5 +50,49 @@ namespace PiedraPapelOTijeras.Tests
             Assert.Contains("El juego ya ha terminado", ex.Message);
         }
 
+        [Fact]
+        public void Jugador_Con_Mas_Puntaje_Que_Limite_Gana()
+        {
+            int limite = 2;
+
+            for (int i = 0; i <= 3; i++)
+            {
+                _jugador1.IncrementarPuntaje();
+            }
+
+            Juego juego1 = new Juego(_jugador1, _jugador2, limite);
+
+            Jugador? ganador = juego1.ObtenerGanador();
+
+            Assert.Equal(_jugador1.Nombre, ganador!.Nombre);
+        }
+
+        [Fact]
+        public void Da_Null_Si_No_Hay_Ganador()
+        {
+            int limite = 5;
+
+            Juego juego1 = new Juego(_jugador1, _jugador2, limite);
+
+            Jugador? ganador = juego1.ObtenerGanador();
+
+            Assert.Null(ganador);
+        }
+
+        [Fact]
+        public void Juego_Terminado_Devulve_Bien_Ganador()
+        {
+            Juego juego1 = new Juego(_jugador1, _jugador2);
+
+            for (int i = 0; i < 3; i++)
+            {
+                juego1.JugarRonda(Juego.Jugada.Piedra, Juego.Jugada.Tijeras);
+            }
+
+            string resultado = juego1.ObtenerEstadoJuego();
+
+            Assert.Contains($"¡Ana ha ganado la partida! (3-0)", resultado);
+
+        }
     }
 }
